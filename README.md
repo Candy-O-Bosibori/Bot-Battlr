@@ -14,7 +14,7 @@ The Bot Army Collection App is a web application that allows users to collect an
 - BotCollection.js: Displays the collection of available bots.
 - BotArmy.js: Manages the enlisted bots and allows releasing them.
 - SingleBot.js: Represents an individual bot card with toggle functionality.
--App.css: The CSS file for styling the entire application.
+- App.css: The CSS file for styling the entire application.
 ## Getting Started
 1. Clone this repository to your local machine.
 2. Navigate to the project directory.
