@@ -1,35 +1,49 @@
 import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
+
 import './App.css'
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [bots, setBots] = useState([]);
+  const [enlistedBots, setEnlistedBots] = useState([]); 
+
+  useEffect(() => {
+    // Fetch data from the db.json data created 
+    fetch('https://my-json-server.typicode.com/martinwakaba/Bot-Battlr/bots')
+    .then((resp) => resp.json())
+    .then((data) => setBots(data))
+    .catch((error) => console.error('Error fetching data:', error));
+}, []);
+
+const releaseFromArmy = (updatedEnlistedBots) => {
+
+  setEnlistedBots(updatedEnlistedBots);
+};
+
+function handleBotDischarge(bot) {
+  // removee the bot from enlistedBots in the frontend
+  const updatedEnlistedBots = enlistedBots.filter((enlistedBot) => enlistedBot.id !== bot.id);
+  setEnlistedBots(updatedEnlistedBots);
+}
+ 
 
   return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+    <div className="App">
+       <BotArmy 
+        enlistedBots={enlistedBots} 
+        releaseFromYourBotArmy={releaseFromArmy}/> 
+
+      <BotCollection
+       bots={bots} 
+       enlistedBots={enlistedBots} 
+       setEnlistedBots={setEnlistedBots}
+       handleBotDischarge={handleBotDischarge}
+      />
+      
+      
+    </div>
+  );
+
+  
 }
 
 export default App
