@@ -1,6 +1,6 @@
 import React from "react";
 
-function SingleBot({ bot, enlistedBots, setEnlistedBots }) {
+function Single({ bot, enlistedBots, setEnlistedBots }) {
   const isEnlisted = enlistedBots.some(
     (enlistedBot) => enlistedBot.id === bot.id
   );
@@ -46,5 +46,4 @@ function SingleBot({ bot, enlistedBots, setEnlistedBots }) {
     
   );
 }
-
-export default SingleBot;
+export default Single;

@@ -1,15 +1,16 @@
 import React from "react";
+import Single from "./Single";
 
-import SingleBot from "./SingleBot";
+
 
 export default function BotCollection({ bots, enlistedBots, setEnlistedBots, handleBotDischarge  }) {
   return (
-    <div className="BotCollection">
-      <h2>Bot Battlr | Bot Collection</h2>
-      <ul className="bot-collection">
+    <div className="BotCollection ">
+      <h2>The Bot Collection</h2>
+      <ul className="bot-collection bg-red-200">
         {bots.map((bot) => (
           <li key={bot.id}>
-            <SingleBot
+            <Single
               bot={bot}
               enlistedBots={enlistedBots}
               setEnlistedBots={setEnlistedBots}

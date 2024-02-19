@@ -16,14 +16,14 @@ export default function BotArmy({ bots, releaseFromYourBotArmy, enlistedBots}){
     }
 
     return (
-      <div className="bot-army">
-        <h2>Bot Battlr | Your Bot Army</h2>
+      <div className="bg-pink-200">
+        <h2> My Bot Army</h2>
       {groupedBots.map((group, index) => (
         <div key={index} className="bot-row">
           {group.map((bot) => (
             <div
               key={bot.id}
-              className="bot-card enlisted"
+              className="bg-pink-200"
               onClick={() => releaseBot(bot)}
             >
               <img src={bot.avatar_url} alt={bot.name} />

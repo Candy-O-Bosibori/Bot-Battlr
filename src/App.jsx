@@ -1,6 +1,8 @@
-import { useState } from 'react'
+import { useState,  useEffect } from 'react'
 
-import './App.css'
+
+import BotArmy from './componenets/Botarmy';
+import BotCollection from './componenets/Collection';
 
 function App() {
   const [bots, setBots] = useState([]);
@@ -8,13 +10,13 @@ function App() {
 
   useEffect(() => {
     // Fetch data from the db.json data created 
-    fetch('https://my-json-server.typicode.com/martinwakaba/Bot-Battlr/bots')
+    fetch('http://localhost:3000/bots')
     .then((resp) => resp.json())
     .then((data) => setBots(data))
     .catch((error) => console.error('Error fetching data:', error));
 }, []);
 
-const releaseFromArmy = (updatedEnlistedBots) => {
+const removeFromArmy = (updatedEnlistedBots) => {
 
   setEnlistedBots(updatedEnlistedBots);
 };
@@ -28,9 +30,9 @@ function handleBotDischarge(bot) {
 
   return (
     <div className="App">
-       <BotArmy 
+       <BotArmy
         enlistedBots={enlistedBots} 
-        releaseFromYourBotArmy={releaseFromArmy}/> 
+        releaseFromYourBotArmy={removeFromArmy}/> 
 
       <BotCollection
        bots={bots} 
